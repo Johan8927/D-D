@@ -1,24 +1,20 @@
-public class Personnage {
+class personnage {
     private String nom;
     private String typePersonnage;
 
     // Constructeur sans paramètres
-    public Personnage() {
-        this.nom = "Inconnu";
-        this.typePersonnage = "Humain";
-    }
+    public personnage() {
+        this.nom = getNom();
+        this.typePersonnage = getTypePersonnage();
 
-    // Constructeur avec nom uniquement
-    public Personnage(String nom) {
-        this.nom = nom;
-        this.typePersonnage = "Humain";  // Par défaut, le type est "Humain"
     }
 
     // Constructeur avec nom et type
-    public Personnage(String nom, String typePersonnage) {
+    public personnage(String nom, String typePersonnage) {
         this.nom = nom;
         this.typePersonnage = typePersonnage;
     }
+
 
     // Getter pour nom
     public String getNom() {
@@ -36,13 +32,17 @@ public class Personnage {
     }
 
     // Setter pour typePersonnage
-    public void setTypePersonnageString typePersonnage) {
-        this.typePersonnage = typePersonnage;
+    public void setTypePersonnageWarrior (String typePersonnage) {
+        this.typePersonnage = ("Warrior");
+    }
+
+    public void setTypePersonnageMagician (String typePersonnage) {
+        this.typePersonnage = ("Mage");
     }
 
     // Méthode toString pour afficher les informations du personnage
     @Override
     public String toString() {
-        return "Nom: " + this.nom + ", Type: " + this.typePersonnage;
+        return "" + this.nom + "" + this.typePersonnage;
     }
 }
