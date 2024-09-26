@@ -1,9 +1,11 @@
+package BoardGame;
+
 import java.util.Random;
 import java.util.Scanner;
 
-class craps {
-    public static void main(String args[]) {
-        System.out.print("Enter the number of dice: ");
+class Craps {
+    public static void main() {
+        System.out.print("Enter the number of Dice: ");
 
         Scanner input = new Scanner(System.in);
         int numberOfDice = input.nextInt();
@@ -25,6 +27,6 @@ class craps {
         input.close();
     }
 
-    public void startGame() {
+    public void home() {
     }
 }

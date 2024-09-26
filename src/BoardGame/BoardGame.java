@@ -1,9 +1,11 @@
+package BoardGame;
+
 import java.util.Random;
 
-public class boardGame {
+public class BoardGame {
     private static final String[] board = new String[64]; // Tableau représentant les 64 cases
 
-    public boardGame() {
+    public BoardGame() {
         initializeBoard(); // Initialiser le plateau
         displayBoard();    // Afficher le plateau
     }
@@ -54,6 +56,6 @@ public class boardGame {
     }
 
     public static void main(String[] args) {
-        new boardGame(); // Créer une nouvelle instance de BoardGame et initialiser le plateau
+        new BoardGame(); // Créer une nouvelle instance de BoardGame et initialiser le plateau
     }
 }
