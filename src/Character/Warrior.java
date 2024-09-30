@@ -1,23 +1,35 @@
 package Character;
 
 
-
 public class Warrior extends Character {
-    private String name = "Warrior";
-    private int attack = (5 - 10);
-    private double health = (5 - 10);
+    private int attack;
+    private double heal;
 
-    public Warrior(String nom, String health){
-        super(nom, health);
+    // Constructeur pour la classe Warrior
+    public Warrior(String name) {
+        super(name, "Warrior"); // Appelle le constructeur de Character
+        this.attack = generateRandomAttack(); // Génère une valeur d'attaque aléatoire entre 5 et 10
+        this.heal = generateRandomheal(); // Génère une valeur de vie aléatoire entre 5 et 10
     }
+
+    // Méthode pour générer une valeur d'attaque entre 5 et 10
+    private int generateRandomAttack() {
+        return (int) (Math.random() * (10 - 5 + 1)) + 5;
+    }
+
+    // Méthode pour générer une valeur de santé entre 5 et 10
+    private double generateRandomheal() {
+        return Math.random() * (10 - 5) + 5;
+    }
+
     @Override
     public void afficherInfos() {
-
+        System.out.println(this + " - Classe: Guerrier");
     }
 
     @Override
     public void attaquer() {
-
+        System.out.println(name + " frappe avec son épée !");
     }
 
     public String getName() {
@@ -28,12 +40,12 @@ public class Warrior extends Character {
         this.name = name;
     }
 
-    public double getHealth() {
-        return health;
+    public int getheal() {
+        return (int) heal;
     }
 
-    public void setHealth(double health) {
-        this.health = health;
+    public void setheal(double heal) {
+        this.heal = heal;
     }
 
     public int getAttack() {

@@ -2,33 +2,31 @@ package Character;
 
 
 public class Magician extends Character {
+    private static String name = "Magician";
+    private int attack = (8-15);
+    private double heal = (3 - 6);
 
-    private String name = "Magician";
-    private int attack = (8 - 15);
-    private double health = (3 - 6);
-
-
-    public Magician(String nom, int health) {
-
-
+    public Magician(String name) {
+        super(name, "Magician", 3-6, 6); // Un magicien pourrait avoir moins de vie par défaut
     }
 
     @Override
     public void afficherInfos() {
-
+        System.out.println(toString() + " - Classe: Magicien");
     }
 
     @Override
     public void attaquer() {
-
+        System.out.println(name + " lance un sort magique !");
     }
 
-    public double getHealth() {
-        return health;
+
+    public int getheal() {
+        return (int) heal;
     }
 
-    public void setHealth(double health) {
-        this.health = health;
+    public void setheal(double heal) {
+        this.heal = (int) heal;
     }
 
     public int getAttack() {
