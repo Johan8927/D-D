@@ -1,8 +1,9 @@
 package StuffAttack;
 
 public class Fire extends Weapon {
+
     public Fire() {
-        super(type, lvlAAttack, name);
+        super("Weapon", 7 , "Boule de feu",0);
     }
 
     }

@@ -5,22 +5,21 @@ public abstract class Character {
 
     // Attributs
     protected int attack;
-    protected static String name;
+    protected String name; // Supprimer 'static' pour rendre 'name' propre à chaque instance
     protected String typeCharacter;
-    protected int health;
+    protected int health; // Correction du nom de l'attribut (au lieu de 'heal')
     protected int maxheal;
     protected int level;
 
     // Constructeur avec paramètres
-    public Character(String name, String typeCharacter, int heal, int maxheal, int attack,int level) {
+    public Character(String name, String typeCharacter, int health, int maxheal, int attack, int level) {
         this.name = name;
         this.typeCharacter = typeCharacter;
-        this.health = heal;
+        this.health = health; // Correction ici aussi
         this.maxheal = maxheal;
         this.attack = attack;
         this.level = level;
     }
-
 
     // Getters et Setters
     public String getName() {
@@ -39,12 +38,12 @@ public abstract class Character {
         this.typeCharacter = typeCharacter;
     }
 
-    public int getheal() {
-        return heal;
+    public int getHealth() { // Correction : 'health' au lieu de 'heal'
+        return health;
     }
 
-    public void setheal(int heal) {
-        this.heal = heal;
+    public void setHealth(int health) { // Correction : 'health' au lieu de 'heal'
+        this.health = health;
     }
 
     public int getMaxheal() {
@@ -58,10 +57,16 @@ public abstract class Character {
     // Méthode toString pour afficher les informations du personnage
     @Override
     public String toString() {
-        return "Nom: " + this.name + ", Type: " + this.typeCharacter + ", Vie: " + this.heal + "/" + this.maxheal;
+        return "Nom: " + this.name + ", Type: " + this.typeCharacter + ", Vie: " + this.health + "/" + this.maxheal;
     }
 
     // Méthodes abstraites à implémenter dans les sous-classes
     public abstract void afficherInfos();
-    public abstract void attaquer();
+    public abstract int attaquer();
+
+    public int getAttack() {
+        return attaquer();
+    }
+
+
 }

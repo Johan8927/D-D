@@ -7,7 +7,7 @@ public class Warrior extends Character {
 
     // Constructeur pour la classe Warrior
     public Warrior(String name) {
-        super(name, "Warrior"); // Appelle le constructeur de Character
+        super("Conan", "Warrior",5-10,10,5-10,1); // Appelle le constructeur de Character
         this.attack = generateRandomAttack(); // Génère une valeur d'attaque aléatoire entre 5 et 10
         this.heal = generateRandomheal(); // Génère une valeur de vie aléatoire entre 5 et 10
     }
@@ -28,8 +28,9 @@ public class Warrior extends Character {
     }
 
     @Override
-    public void attaquer() {
+    public int attaquer() {
         System.out.println(name + " frappe avec son épée !");
+        return 0;
     }
 
     public String getName() {

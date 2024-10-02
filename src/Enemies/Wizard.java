@@ -1,11 +1,11 @@
 package Enemies;
 
 public class Wizard extends Enemy{
-    private String name = "Wizard";
-    private int attack = 2;
-    private int heal = 9;
+    private String name ;
+    private int attack ;
+    private int heal;
 
-    public Wizard(String name, int attack) {
-        super(name, attack);
+    public Wizard(String name, int attack,int heal) {
+        super();
     }
 }

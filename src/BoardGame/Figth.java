@@ -33,7 +33,7 @@ public class Figth {
 
         // Then each enemy attacks
         for (Character enemy : Enemies) {
-            if (enemy.getheal() > 0) {
+            if (enemy.getHealth() > 0) {
                 System.out.println("It's " + enemy.getName() + "'s turn!");
 
             }
@@ -43,12 +43,12 @@ public class Figth {
     // Method to check if the combat is over
     private boolean checkEndOfCombat() {
         // Check if the player or all Enemies are at 0 heal
-        if (player.getheal() <= 0) {
+        if (player.getHealth() <= 0) {
             System.out.println("The player has been defeated!");
             return true;
         }
         for (Character enemy : Enemies) {
-            if (enemy.getheal() > 0) {
+            if (enemy.getHealth() > 0) {
                 return false; // Combat is still ongoing
             }
         }

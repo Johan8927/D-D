@@ -7,7 +7,7 @@ public class Magician extends Character {
     private double heal = (3 - 6);
 
     public Magician(String name) {
-        super(name, "Magician", 3-6, 6); // Un magicien pourrait avoir moins de vie par défaut
+        super("Merlin", "Magician", 3-6, 6, 8-15,1); // Un magicien pourrait avoir moins de vie par défaut
     }
 
     @Override
@@ -16,8 +16,9 @@ public class Magician extends Character {
     }
 
     @Override
-    public void attaquer() {
+    public int attaquer() {
         System.out.println(name + " lance un sort magique !");
+        return 0;
     }
 
 

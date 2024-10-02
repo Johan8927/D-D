@@ -1,9 +1,9 @@
 package SurpriseBox;
 
 public class Item {
-    private String type;
-    private int lvlAAttack;
-    private String name;
+    public String type;
+    public int lvlAAttack;
+    public String name;
     public int heal;
 
 

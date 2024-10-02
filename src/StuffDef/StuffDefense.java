@@ -9,8 +9,8 @@ public abstract class StuffDefense extends Item {
     private int niveauDefense;
 
 
-    public StuffDefense(String type, int lvlAAttack, String name, int heal) {
-        super(type, lvlAAttack, name, heal);
+    public StuffDefense(String type, int lvlAAttack, String name, int niveauDefense) {
+        super(type, lvlAAttack, name, niveauDefense);
     }
 
     // Getters
@@ -18,5 +18,5 @@ public abstract class StuffDefense extends Item {
         return niveauDefense;
     }
 
-    // Le getter pour 'name' et 'heal' sont hérités de la classe Item
+
 }

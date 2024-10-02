@@ -11,7 +11,8 @@ public abstract class Potions extends Item {
     public String name;
 
     // Constructeur de la classe Potions
-    public Potions(String type, int heal, String name) {
+    public Potions(String type,int lvlAAttack ,int heal, String name) {
+        super(type,lvlAAttack, name, heal);
 
         this.type = type;
         this.heal = heal;
@@ -44,8 +45,9 @@ public abstract class Potions extends Item {
         return "Potion: " + this.name + ", Type: " + this.type + ", heal: " + this.heal;
     }
 
-    public long getheal() {
-        return this.heal;
+    // Méthode pour utiliser la potion
+    public void utiliser() {
+        System.out.println("Utilisation de la potion: " + this.name);
     }
 }
 

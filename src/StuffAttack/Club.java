@@ -3,7 +3,7 @@ package StuffAttack;
 public class Club extends Weapon {
 
     public Club() {
-        super(type, lvlAAttack, name);
+        super("Weapon", 3,"FracasseCrane", 0);
     }
 }
 

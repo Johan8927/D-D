@@ -1,24 +1,33 @@
 package Main;
 
 import BoardGame.BoardGame;
-import BoardGame.Game;
-import StuffAttack.Club;
-import StuffAttack.Fire;
-import StuffAttack.Storm;
-import StuffAttack.Sword;
-import StuffDef.*;
-import SurpriseBox.SurpriseBox;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Créer un nouveau plateau de jeu
+        BoardGame game = new BoardGame();
 
-        // démarrage du jeu
-        Game game = new Game();  // Créer un objet Game
-        game.home();        // Démarrer le jeu
+        // Scanner pour interagir avec l'utilisateur
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bienvenue dans BoardGame!");
 
-        do {
-            game = new Game.nextTurn(perso,sc);
-        } while (game.equals("IN PROGRESS"));
+        // Interaction simple: Demander à l'utilisateur d'ajouter un ennemi ou un item
+        System.out.println("Souhaitez-vous ajouter un ennemi ou un item ? (Oui/Non)");
+        String input = scanner.nextLine();
 
+        System.out.println("Entrez le numéro de la case (1-64) :");
+        int index = scanner.nextInt() - 1;
+
+        if (input.equalsIgnoreCase("Oui")) {
+            game.addEnemy(index);
+        } else if (input.equalsIgnoreCase("Non")) {
+            game.addItem(index);
+        } else {
+            System.out.println("Choix non valide.");
+        }
+
+        scanner.close();
     }
 }

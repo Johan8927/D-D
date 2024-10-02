@@ -2,8 +2,10 @@ package StuffAttack;
 
 public class Storm extends Weapon {
 
+
+
     public Storm() {
-        super(type, lvlAAttack, name);
+        super("Weapon",2,"Eclair", 0);
     }
 
 }

@@ -10,7 +10,7 @@ import StuffDef.StuffDefense;
 
 import java.util.Scanner;
 
-public class Game {
+public abstract class Game {
 
     public void home() {
         Scanner scanner = new Scanner(System.in);
@@ -90,8 +90,8 @@ public class Game {
         // Choisir arme ou sort selon le type de personnage
         if (joueur instanceof Warrior) {
             System.out.println("Choisissez votre arme : ");
-            System.out.println("1. Épée");
-            System.out.println("2. Gourdin");
+            System.out.println("1. Sword");
+            System.out.println("2. Club");
             int armeChoix = scanner.nextInt();
             scanner.nextLine(); // Consomme la nouvelle ligne
             Weapon weapon = switch (armeChoix) {

@@ -5,6 +5,6 @@ public class SteelArmor extends StuffDefense {
 
     public SteelArmor(String name)
     {
-        super("Armor", 4);
+        super("Armor", 0 , "Steel Armor" , 5 );
     }
 }

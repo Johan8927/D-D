@@ -4,6 +4,6 @@ public class Sword extends Weapon {
 
     public Sword()
     {
-        super(type, lvlAAttack,name);
+        super("Weapon", 5,"Excalibur", 0);
     }
 }
