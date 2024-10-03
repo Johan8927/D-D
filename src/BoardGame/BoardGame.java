@@ -2,21 +2,22 @@ package BoardGame;
 
 import Case.Case;
 import Case.ItemCase;
-import Case.EnemyCase;
+import Case.EmptyCase;
+import Enemies.EnemyCase;
 import Interface.GameInterface;
-import Character.Character;
-import Case.CharacterCase;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-
-public class BoardGame extends Game implements GameInterface {
+public class BoardGame implements GameInterface {
     private final ArrayList<Case> board = new ArrayList<>(64); // Plateau de 64 cases
+    private final int taille = 64;  // Taille du plateau (8x8)
+    private int joueurX = 0;  // Position X initiale du joueur
+    private int joueurY = 0;  // Position Y initiale du joueur
 
+    // Constructeur
     public BoardGame() {
         initializeBoard(); // Initialiser le plateau
-        displayBoard();    // Afficher le plateau
+        displayBoard();    // Afficher l'état initial du plateau
     }
 
     // Méthode pour initialiser le plateau de jeu
@@ -25,16 +26,33 @@ public class BoardGame extends Game implements GameInterface {
         Random random = new Random();
 
         // Boucle pour initialiser chaque case du plateau
-        for (int i = 0; i < 64; i++) {
+        for (int i = 0; i < taille; i++) {
             double chance = random.nextDouble(); // Génère un nombre entre 0 et 1
             if (chance < 0.33) {
-                board.add(new EnemyCase()); // 33% de chances d'avoir un ennemi
+                board.add(new EnemyCase()); // Ajoute une case avec un ennemi
             } else if (chance < 0.66) {
-                board.add(new ItemCase()); // 33% de chances d'avoir une caisse surprise (item)
+                board.add(new ItemCase());
             } else {
-                board.add(new Case()); // Sinon, la case est vide
+                board.add(new EmptyCase() {  // Ajoute une case vide
+                    @Override
+                    public void interagir() {
+                        System.out.println("Case vide, rien ne se passe.");
+                    }
+                });
             }
         }
+    }
+    // Méthode pour ajouter un personnage au plateau
+
+
+    @Override
+    public void addEnemy(int index) {
+
+    }
+
+    @Override
+    public void addItem(int index) {
+
     }
 
     // Méthode pour afficher l'état du plateau
@@ -42,97 +60,78 @@ public class BoardGame extends Game implements GameInterface {
     public void displayBoard() {
         System.out.println("État du plateau de jeu :");
         for (int i = 0; i < board.size(); i++) {
-            System.out.println("Case " + (i + 1) + ": " + board.get(i).toString());
+            System.out.print("Case " + (i + 1) + ": ");
+            board.get(i).interagir(); // Appelle la méthode interagir pour chaque case
         }
     }
 
-    // Déplacement d'un personnage d'une case à une autre
     @Override
     public void moveCharacter(int fromIndex, int toIndex) {
-        if (fromIndex < 0 || toIndex < 0 || fromIndex >= board.size() || toIndex >= board.size()) {
-            System.out.println("Indices hors limites");
-            return;
-        }
 
-        Case fromCase = board.get(fromIndex);
-        Case toCase = board.get(toIndex);
-
-        // Déplace le contenu de la case d'origine vers la nouvelle case
-        board.set(toIndex, fromCase);
-        board.set(fromIndex, new Case()); // Réinitialise l'ancienne case
-
-        System.out.println("Le personnage bouge de la case " + (fromIndex + 1) + " à la case " + (toIndex + 1));
     }
 
-    // Gestion de l'attaque sur une case
     @Override
     public void attackOnCase(int index) {
-        if (index < 0 || index >= board.size()) {
-            System.out.println("Indice hors limites");
-            return;
-        }
 
-        System.out.println("Le personnage attaque sur la case " + (index + 1));
-        // Logique d'attaque à implémenter selon les règles du jeu
     }
 
-
-    // Ajouter un personnage à une case
     @Override
-    public void addCharacter(int index, java.lang.Character character) {
-        if (index < 0 || index >= board.size()) {
-            System.out.println("Indice hors limites");
-            return;
-        }
-
-        board.set(index, new CharacterCase(character)); // Suppose que tu as une `CharacterCase`
+    public void addCharacter(int index, Character character) {
 
     }
 
-    // Ramasser un objet sur une case
     @Override
     public void pickUpItem(int index) {
-        if (index < 0 || index >= board.size()) {
-            System.out.println("Indice hors limites");
-            return;
+
+    }
+
+    // Méthode pour déplacer le joueur après avoir jeté les dés
+    public void deplacerJoueur(int resultDes) {
+        // Déplacement simple du joueur selon le résultat du jeté de dés
+        joueurY += resultDes;
+
+        // Si le joueur dépasse les bords du plateau, on le fait "tourner"
+        while (joueurY >= taille) {
+            joueurY -= taille;
+            joueurX += 1;
         }
 
-        Case caseAtIndex = board.get(index);
-        if (caseAtIndex instanceof ItemCase) {
-            System.out.println("Le personnage ramasse l'item sur la case " + (index + 1));
-            board.set(index, new Case()); // Retire l'objet en réinitialisant la case
-        } else {
-            System.out.println("Aucun objet à ramasser sur la case " + (index + 1));
+        if (joueurX >= taille) {
+            joueurX = taille - 1;  // Le joueur reste sur la dernière ligne
+            joueurY = taille - 1;  // Le joueur reste dans la dernière case
+        }
+
+        System.out.println("Le joueur se déplace en position (" + joueurX + ", " + joueurY + ")");
+        interagirAvecCase(joueurX * taille + joueurY);  // Interaction avec la nouvelle case
+    }
+
+    // Méthode pour interagir avec la case actuelle
+    public void interagirAvecCase(int index) {
+        board.get(index).interagir();
+    }
+
+    // Classe Dice pour gérer les jets de dés
+    public static class Dice {
+        private final int sides;
+
+        // Constructeur
+        public Dice() {
+            this.sides = 6;
+        }
+
+        // Méthode pour jeter le dé
+        public int roll() {
+            return (int) (Math.random() * sides) + 1;
         }
     }
 
-    // Méthode pour vérifier si une case est vide
-    private boolean isCaseEmpty(int index) {
-        return board.get(index) instanceof Case && !(board.get(index) instanceof EnemyCase || board.get(index) instanceof ItemCase);
-    }
-
-    // Méthode pour ajouter un ennemi dans une case spécifique
-    public void addEnemy(int index) {
-        if (isCaseEmpty(index)) {
-            board.set(index, new EnemyCase());
-            System.out.println("Ennemi ajouté à la case " + (index + 1));
-        } else {
-            System.out.println("La case " + (index + 1) + " n'est pas vide.");
-        }
-    }
-
-    // Méthode pour ajouter un item dans une case spécifique
-    public void addItem(int index) {
-        if (isCaseEmpty(index)) {
-            board.set(index, new ItemCase());
-            System.out.println("Caisse surprise ajoutée à la case " + (index + 1));
-        } else {
-            System.out.println("La case " + (index + 1) + " n'est pas vide.");
-        }
-    }
-
+    // Méthode principale
     public static void main(String[] args) {
-        new BoardGame(); // Créer une nouvelle instance de BoardGame
+        BoardGame game = new BoardGame();  // Créer une nouvelle instance de BoardGame
+        Dice d6 = new Dice();  // Dé pour un jeu classique (6 faces)
+        int resultDes = d6.roll();   // Le joueur jette les dés
+        System.out.println("Résultat des dés : " + resultDes);
+        game.deplacerJoueur(resultDes);    // Le joueur se déplace en fonction du jet de dés
+        game.displayBoard();               // Affiche le plateau après le déplacement
     }
-
 }

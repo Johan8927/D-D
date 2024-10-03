@@ -33,4 +33,17 @@ public class ItemCase extends Case {
             currentPotions = new SmallPotion();
         }
     }
+
+    @Override
+    public void interagir() {
+        if (currentItem!= null) {
+            System.out.println("La case contient : " + currentItem.toString());
+        } else if (currentPotions!= null) {
+            System.out.println("La case contient : " + currentPotions.toString());
+        } else {
+            System.out.println("La case est vide.");
+        }
+
+
+    }
 }

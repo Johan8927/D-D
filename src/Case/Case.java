@@ -1,14 +1,7 @@
 package Case;
 
-public class Case {
-    // Contient un élément du jeu (Enemy, SurpriseBox, etc.)
-private String name;
-
-    public Case() {
-
-        getRandomEnemy
-
-    }
-
+public abstract class Case {
+    // Classe abstraite pour toutes les cases
+    public abstract void interagir();
 
 }

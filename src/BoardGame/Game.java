@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public abstract class Game {
 
-    public void home() {
+    public static void home() {
         Scanner scanner = new Scanner(System.in);
         int choice;
 
@@ -42,7 +42,7 @@ public abstract class Game {
     }
 
     // Méthode pour démarrer une nouvelle partie
-    public void startNewGame(Scanner scanner) {
+    public static void startNewGame(Scanner scanner) {
         System.out.println("La partie commence !");
 
         // Demander le nom du joueur
@@ -127,6 +127,7 @@ public abstract class Game {
         // Démarrer la partie avec le personnage créé
         joueur.afficherInfos();
     }
-
+// initialise le plateau de jeu
+    private static BoardGame boardGame = new BoardGame();
 
 }

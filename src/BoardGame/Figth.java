@@ -4,6 +4,8 @@ import Character.Character;
 
 import java.util.List;
 
+
+
 public class Figth {
     private final Character player; // Renamed from "joueur" to "player"
     private final List<Character> Enemies; // Renamed from "ennemis" to "Enemies"
@@ -12,7 +14,7 @@ public class Figth {
     public Figth(Character player, List<Character> Enemies) {
         this.player = player;
         this.Enemies = Enemies;
-        this.turn = 0; // Starts at turn 0
+        this.turn = 0;
     }
 
     // Method to initiate combat
@@ -57,7 +59,8 @@ public class Figth {
     }
 
     // Method to add a new enemy to the combat
-    public void addEnemy(Character enemy) {
+    public void addEnemy(Character enemy)
+    {
         Enemies.add(enemy);
     }
 }

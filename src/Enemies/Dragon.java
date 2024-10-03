@@ -1,13 +1,14 @@
 package Enemies;
 
-public class Dragon extends Enemy {
+
+public class Dragon {
     private String name;
     private int attack;
     private int heal;
 
     public Dragon(String name, int attack,int heal
     ) {
-        super();
+
     }
 
     public String getName() {

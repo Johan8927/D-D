@@ -28,4 +28,9 @@ public class CharacterCase extends Case {
             return "Case vide (aucun personnage)";
         }
     }
+
+    @Override
+    public void interagir() {
+
+    }
 }

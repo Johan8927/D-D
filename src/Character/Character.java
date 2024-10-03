@@ -38,11 +38,11 @@ public abstract class Character {
         this.typeCharacter = typeCharacter;
     }
 
-    public int getHealth() { // Correction : 'health' au lieu de 'heal'
+    public int getHealth() {
         return health;
     }
 
-    public void setHealth(int health) { // Correction : 'health' au lieu de 'heal'
+    public void setHealth(int health) {
         this.health = health;
     }
     public int getDefense() {
@@ -74,10 +74,17 @@ public abstract class Character {
         return null;
     }
 
-    // Méthode toString pour afficher les informations du personnage
+
     @Override
     public String toString() {
-        return "Nom: " + this.name + ", Type: " + this.typeCharacter + ", Vie: " + this.health;
+        return "Personnage{" +
+                "name='" + name + '\'' +
+                ", typeCharacter='" + typeCharacter + '\'' +
+                ", health=" + health +
+                ", defense=" + defense +
+                ", attack=" + attack +
+                ", level=" + level +
+                '}';
     }
 
     // Méthodes abstraites à implémenter dans les sous-classes

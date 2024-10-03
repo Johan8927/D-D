@@ -1,6 +1,8 @@
 package Enemies;
 
-public class Wizard extends Enemy{
+
+
+public class Wizard {
     private String name ;
     private int attack ;
     private int heal;
