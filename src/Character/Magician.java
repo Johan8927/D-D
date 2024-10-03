@@ -2,17 +2,17 @@ package Character;
 
 
 public class Magician extends Character {
-    private static String name = "Magician";
+    private String name = "Magician";
     private int attack = (8-15);
     private double heal = (3 - 6);
 
     public Magician(String name) {
-        super("Merlin", "Magician", 3-6, 6, 8-15,1); // Un magicien pourrait avoir moins de vie par défaut
+        super("Merlin", "Hero", 3-6, 6, 8-15,1); // Un magicien pourrait avoir moins de vie par défaut
     }
 
     @Override
     public void afficherInfos() {
-        System.out.println(toString() + " - Classe: Magicien");
+        System.out.println(this + " - Classe: Magicien");
     }
 
     @Override

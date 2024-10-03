@@ -9,4 +9,27 @@ public class Goblins extends Enemy {
         super();
     }
 
+    public int getAttack() {
+        return attack;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHeal() {
+        return heal;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public void setHeal(int heal) {
+        this.heal = heal;
+    }
 }

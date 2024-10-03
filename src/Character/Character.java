@@ -5,18 +5,18 @@ public abstract class Character {
 
     // Attributs
     protected int attack;
-    protected String name; // Supprimer 'static' pour rendre 'name' propre à chaque instance
+    protected String name;
     protected String typeCharacter;
-    protected int health; // Correction du nom de l'attribut (au lieu de 'heal')
-    protected int maxheal;
+    protected int defense;
+    protected int health;
     protected int level;
 
     // Constructeur avec paramètres
-    public Character(String name, String typeCharacter, int health, int maxheal, int attack, int level) {
+    public Character(String name, String typeCharacter,int defense, int health, int attack, int level) {
         this.name = name;
         this.typeCharacter = typeCharacter;
-        this.health = health; // Correction ici aussi
-        this.maxheal = maxheal;
+        this.health = health;
+        this.defense = defense;
         this.attack = attack;
         this.level = level;
     }
@@ -45,19 +45,39 @@ public abstract class Character {
     public void setHealth(int health) { // Correction : 'health' au lieu de 'heal'
         this.health = health;
     }
-
-    public int getMaxheal() {
-        return maxheal;
+    public int getDefense() {
+        return defense;
+    }
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 
-    public void setMaxheal(int maxheal) {
-        this.maxheal = maxheal;
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    // Méthode getHero pour afficher tous les Personnages
+    public Character getHero(Character[] characters) {
+        for (Character character : characters) {
+            if (character.getTypeCharacter().equals("Hero")) {
+                return character;
+            }
+        }
+        return null;
     }
 
     // Méthode toString pour afficher les informations du personnage
     @Override
     public String toString() {
-        return "Nom: " + this.name + ", Type: " + this.typeCharacter + ", Vie: " + this.health + "/" + this.maxheal;
+        return "Nom: " + this.name + ", Type: " + this.typeCharacter + ", Vie: " + this.health;
     }
 
     // Méthodes abstraites à implémenter dans les sous-classes

@@ -134,4 +134,5 @@ public class BoardGame extends Game implements GameInterface {
     public static void main(String[] args) {
         new BoardGame(); // Créer une nouvelle instance de BoardGame
     }
+
 }

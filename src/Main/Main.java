@@ -4,6 +4,7 @@ import BoardGame.BoardGame;
 
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) {
         // Créer un nouveau plateau de jeu
@@ -30,4 +31,5 @@ public class Main {
 
         scanner.close();
     }
+
 }

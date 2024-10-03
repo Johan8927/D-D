@@ -7,7 +7,7 @@ public class Warrior extends Character {
 
     // Constructeur pour la classe Warrior
     public Warrior(String name) {
-        super("Conan", "Warrior",5-10,10,5-10,1); // Appelle le constructeur de Character
+        super("Conan", "Hero",5-10,10,5-10,1); // Appelle le constructeur de Character
         this.attack = generateRandomAttack(); // Génère une valeur d'attaque aléatoire entre 5 et 10
         this.heal = generateRandomheal(); // Génère une valeur de vie aléatoire entre 5 et 10
     }
