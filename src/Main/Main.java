@@ -34,8 +34,6 @@ public class Main {
                 // Déplacer le joueur en fonction du résultat du jet de dés
                 game.deplacerJoueur(resultDes);
 
-                // Afficher l'état du plateau après le déplacement
-                game.displayBoard();
             } else {
                 System.out.println("Commande non reconnue, veuillez essayer à nouveau.");
             }

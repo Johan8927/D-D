@@ -10,14 +10,13 @@ import java.util.Random;
 
 public class BoardGame implements GameInterface {
     private final ArrayList<Case> board = new ArrayList<>(64); // Plateau de 64 cases
-    private final int taille = 64;  // Taille du plateau (8x8)
-    private int joueurX = 0;  // Position X initiale du joueur
-    private int joueurY = 0;  // Position Y initiale du joueur
+    private final int taille = 64;  // Taille du plateau
+    private int joueurPosition = 0;  // Position initiale du joueur (index unique)
 
     // Constructeur
     public BoardGame() {
         initializeBoard(); // Initialiser le plateau
-        displayBoard();    // Afficher l'état initial du plateau
+
     }
 
     // Méthode pour initialiser le plateau de jeu
@@ -42,67 +41,50 @@ public class BoardGame implements GameInterface {
             }
         }
     }
-    // Méthode pour ajouter un personnage au plateau
 
-
-    @Override
-    public void addEnemy(int index) {
-
-    }
-
-    @Override
-    public void addItem(int index) {
-
-    }
-
-    // Méthode pour afficher l'état du plateau
-    @Override
-    public void displayBoard() {
-        System.out.println("État du plateau de jeu :");
-        for (int i = 0; i < board.size(); i++) {
-            System.out.print("Case " + (i + 1) + ": ");
-            board.get(i).interagir(); // Appelle la méthode interagir pour chaque case
-        }
-    }
 
     @Override
     public void moveCharacter(int fromIndex, int toIndex) {
-
+        // Logique pour déplacer un personnage (à implémenter si nécessaire)
     }
 
     @Override
     public void attackOnCase(int index) {
-
+        // Logique pour gérer une attaque sur une case (à implémenter si nécessaire)
     }
 
     @Override
     public void addCharacter(int index, Character character) {
+        // Logique pour ajouter un personnage à une case spécifique (à implémenter si nécessaire)
+    }
 
+    @Override
+    public void addEnemy(int index) {
+        // Logique pour ajouter un ennemi sur une case spécifique (à implémenter si nécessaire)
+    }
+
+    @Override
+    public void addItem(int index) {
+        // Logique pour ajouter un item sur une case spécifique (à implémenter si nécessaire)
     }
 
     @Override
     public void pickUpItem(int index) {
-
+        // Logique pour ramasser un item (à implémenter si nécessaire)
     }
 
     // Méthode pour déplacer le joueur après avoir jeté les dés
     public void deplacerJoueur(int resultDes) {
-        // Déplacement simple du joueur selon le résultat du jeté de dés
-        joueurY += resultDes;
+        // Met à jour la position du joueur
+        joueurPosition += resultDes;
 
-        // Si le joueur dépasse les bords du plateau, on le fait "tourner"
-        while (joueurY >= taille) {
-            joueurY -= taille;
-            joueurX += 1;
+        // Si le joueur dépasse le nombre de cases, il revient au début
+        if (joueurPosition >= taille) {
+            joueurPosition = taille - 1; // Reste sur la dernière case
         }
 
-        if (joueurX >= taille) {
-            joueurX = taille - 1;  // Le joueur reste sur la dernière ligne
-            joueurY = taille - 1;  // Le joueur reste dans la dernière case
-        }
-
-        System.out.println("Le joueur se déplace en position (" + joueurX + ", " + joueurY + ")");
-        interagirAvecCase(joueurX * taille + joueurY);  // Interaction avec la nouvelle case
+        System.out.println("Le joueur se déplace à la position " + joueurPosition);
+        interagirAvecCase(joueurPosition);  // Interaction avec la nouvelle case
     }
 
     // Méthode pour interagir avec la case actuelle
@@ -132,6 +114,6 @@ public class BoardGame implements GameInterface {
         int resultDes = d6.roll();   // Le joueur jette les dés
         System.out.println("Résultat des dés : " + resultDes);
         game.deplacerJoueur(resultDes);    // Le joueur se déplace en fonction du jet de dés
-        game.displayBoard();               // Affiche le plateau après le déplacement
+
     }
 }

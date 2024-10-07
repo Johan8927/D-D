@@ -2,13 +2,13 @@ package Enemies;
 
 
 
-public class Wizard {
+public class Wizard extends Enemy{
     private String name ;
     private int attack ;
     private int heal;
 
     public Wizard(String name, int attack,int heal) {
-        super();
+        super( "Wizard", 2,9);
     }
 
     public String getName() {

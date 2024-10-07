@@ -2,13 +2,13 @@ package Enemies;
 
 
 
-public class Goblins  {
-    public String name;
-    public int attack ;
-    public int heal;
+public class Goblins extends Enemy  {
+    private String name;
+    private int attack ;
+    private int heal;
 
     public Goblins(String name, int attack, int heal) {
-        super();
+        super( "Goblins", 1,6);
     }
 
     public int getAttack() {

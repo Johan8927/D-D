@@ -11,8 +11,8 @@ GameInterface {
     // Méthode pour ajouter un item dans une case spécifique
     void addItem(int index);
 
-    // Méthode pour afficher l'état du plateau
-    void displayBoard();
+
+
 
     // Méthode pour déplacer un personnage sur le plateau
     void moveCharacter(int fromIndex, int toIndex);
